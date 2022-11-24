@@ -24,6 +24,7 @@ const CreateTaks = async (req, res) => {
     });
   } catch (error) {
     // duplication of data with same title
+    console.log(error);
     if (error.index == 0) {
       return res.status(401).json({
         success: false,

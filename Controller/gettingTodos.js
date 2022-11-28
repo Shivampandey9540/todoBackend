@@ -5,14 +5,14 @@ const gettingTodos = async (req, res) => {
     const Todos_data = await Todos.find();
     console.log(Todos_data);
     res.status(200).json({
-      success: true,
+      Success: true,
       Message: "Data given as the full object",
       data: Todos_data,
     });
   } catch (error) {
     console.log(error);
     res.status(401).json({
-      success: false,
+      Success: false,
       Message: "Some error has been accured",
       Error: error,
     });
@@ -31,6 +31,11 @@ const getTodo = async (req, res) => {
   try {
     const TodoAvaliable = await Todos.findById({ _id: id });
 
+    /**
+     *
+     * *({or:[ {tittle: new RegExp(search, "i")}, {tasks: new RegExp(search: "i")}]})
+     *
+     */
     if (!TodoAvaliable) {
       return res.status(402).json({
         success: false,

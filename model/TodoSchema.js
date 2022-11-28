@@ -9,6 +9,14 @@ const Todo = mongoose.Schema({
   tasks: {
     type: [{ task: { type: String } }],
   },
+  isimportant: {
+    type: Boolean,
+    default: false,
+  },
+  Check: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Todo", Todo);

@@ -29,7 +29,7 @@ const MarkImportant = async (req, res) => {
     MarkedDone.save();
 
     res.status(200).json({
-      Success: false,
+      Success: true,
       Message: "It has been checked",
       MarkedDone,
     });

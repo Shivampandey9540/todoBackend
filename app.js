@@ -8,7 +8,7 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
 const corsOptions = {
-  origin: "https://todofrontend-txbl.vercel.app/",
+  origin: "https://todoappshivampandey.herokuapp.com/",
   optionsSucccessStatus: 200,
 };
 const cors = require("cors");

@@ -4,6 +4,7 @@ const { CreatedTodo, CreateTask } = require("../Controller/createTask");
 const { gettingTodos, getTodo } = require("../Controller/gettingTodos");
 const { DeleteTasks, DeleteOneTask } = require("../Controller/deleteTask");
 
+const Sorted = require("../Controller/SortedbyDate");
 const { MarkCheck } = require("../Controller/CheckMark");
 
 const { MarkImportant } = require("../Controller/MarkImportant");
@@ -17,6 +18,7 @@ route.get("/", (req, res) => {
   });
 });
 
+//Create single task
 route.post("/Create", CreatedTodo);
 
 route.get("/GetTodos", gettingTodos);
@@ -31,10 +33,13 @@ route.delete("/DeletetaTask/:Title_id/:Task_id", DeleteOneTask);
 
 /** work in progress */
 
+//create multiple task at once
 route.post("/Creates", CreateTask);
 
 route.put("/CheckMark/:Title_id", MarkCheck);
 route.put("/MarkImportant/:Title_id", MarkImportant);
 
 route.get("/Search/:str", Search);
+
+route.get("/Sorted", Sorted);
 module.exports = route;

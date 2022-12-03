@@ -1,5 +1,13 @@
 const Todos = require("../model/TodoSchema");
 const mongoose = require("mongoose");
+/**
+ *
+ * @param {Title_id} req.params  it's hold Id so we can Delete only
+ *  required Data or nothing else ---
+ *
+ * @param {*} res
+ * @returns
+ */
 const DeleteTasks = async (req, res) => {
   const { Title_id } = req.params;
 
@@ -54,11 +62,9 @@ const DeleteOneTask = async (req, res) => {
   }
   try {
     const data = await Todos.find({
-      tasks: {
-        _id: Task_id,
-      },
+      _id: Title_id,
     });
-    console.log(data.length);
+    console.log(data, "helo");
 
     if (data.length == 0) {
       return res.status(404).json({
@@ -67,11 +73,12 @@ const DeleteOneTask = async (req, res) => {
       });
     }
 
-    data.tasks = data.tasks.filter((e) => {
+    data[0].tasks = data[0].tasks.filter((e) => {
       return e._id != Task_id;
     });
+    console.log(data);
 
-    data.save();
+    data[0].save();
 
     res.status(200).json({
       Success: true,

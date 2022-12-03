@@ -7,7 +7,11 @@ const Todo = mongoose.Schema({
     required: [true, "Requied"],
   },
   tasks: {
-    type: [{ task: { type: String } }],
+    type: [{ task: { type: String, trim: true } }],
+  },
+  CreatedDate: {
+    type: Date,
+    default: Date.now,
   },
   isimportant: {
     type: Boolean,

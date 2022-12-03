@@ -1,5 +1,20 @@
 const Todo = require("../model/TodoSchema");
 const mongoose = require("mongoose");
+/**
+ *
+ * @param {Title_id} req.params it has the  Title id for Searching--
+ * @param {200} res response is a json with Success
+ * Message and data which has been marked out ---
+ *
+ * @condition Deponeding on condition we are
+ * able to send different data----
+ *         - When title_ id is not Available
+ *         - when passed title_id is  no a valid objectId
+ *         - When data is not Avilable
+ *
+ * @returns
+ */
+
 const MarkCheck = async (req, res) => {
   const { Title_id } = req.params;
   if (!Title_id) {

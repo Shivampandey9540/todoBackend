@@ -1,5 +1,18 @@
 const Todo = require("../model/TodoSchema");
-
+/**
+ *
+ * @param {Title, Task} req.body it has the  Title id for Searching--
+ * @param {200} res response is a json with Success,
+ * Message and data which has been created---
+ *
+ * @condition Deponeding on condition we are
+ * able to send different data----
+ *         - When title_ id is not Available ( without Task A todo can exists)--
+ *         - when data with same Title  already exist in database ( error.index == 0)--
+ *         - when data is required and it' not passed through information--
+ *
+ * @returns
+ */
 const CreatedTodo = async (req, res) => {
   const { Title, Task } = req.body;
 
@@ -12,6 +25,7 @@ const CreatedTodo = async (req, res) => {
   }
 
   try {
+    //trying to create new Data here
     const CreatedTodo = await Todo.create({
       Title: Title,
       tasks: [{ task: Task }],
@@ -46,6 +60,21 @@ const CreatedTodo = async (req, res) => {
   }
 };
 
+/**
+ *
+ * @param {Title, Tasks, isimportant} req.body it has the  Title id for Searching--
+ * @param {200} res response is a json with Success,
+ * Message and data which has been created---
+ *
+ * @condition Deponeding on condition we are
+ * able to send different data Error ----
+ *         - When title_ id is not Available ( without Task A todo can exists)
+ *         - when data with same Title  already exist in database ( error.index == 0)
+ *         - when data is required and it' not passed through information
+ *
+ * @returns
+ */
+
 /**Work in progres */
 const CreateTask = async (req, res) => {
   const { Title, Tasks, isimportant } = req.body;
@@ -60,6 +89,7 @@ const CreateTask = async (req, res) => {
   }
 
   try {
+    //trying to create new Data here
     const CreatedTodo = await Todo.create({
       Title: Title,
       tasks: Tasks,
